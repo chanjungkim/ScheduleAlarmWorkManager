@@ -44,7 +44,7 @@
             android:padding="@dimen/padding_btn"
             android:text="시간 설정"
             android:textAlignment="center"
-            android:textColor="@color/colortextbutton"
+            android:textColor="#FFFFFF"
             android:textSize="16sp" />
 
         <Button
@@ -58,7 +58,7 @@
             android:padding="@dimen/padding_btn"
             android:text="등록"
             android:textAlignment="center"
-            android:textColor="@color/colortextbutton"
+            android:textColor="#FFFFFF"
             android:textSize="16sp" />
 
         <Button
@@ -72,7 +72,7 @@
             android:padding="@dimen/padding_btn"
             android:text="CLEAR"
             android:textAlignment="center"
-            android:textColor="@color/colortextbutton"
+            android:textColor="#FFFFFF"
             android:textSize="16sp" />
     </LinearLayout>
 </RelativeLayout>

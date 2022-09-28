@@ -14,18 +14,16 @@ import java.util.concurrent.TimeUnit
 class AlertWorker(context: Context, workerParams: WorkerParameters) :
     Worker(context, workerParams) {
     override fun doWork(): Result {
+        logdd("doWork()")
         val title = inputData.getString("title")
         val message = inputData.getString("message")
         val id = inputData.getLong("idNotification", 0).toInt()
         val context = this.applicationContext
 
         // Show Notification
-        val notificationUtil = NotificationUtil(context)
-        if (title != null) {
-            if (message != null) {
-                showNotification(context)
-            }
-        }
+//        val notificationUtil = NotificationUtil(context)
+
+        showNotification(context)
         return Result.success()
     }
 
@@ -45,11 +43,11 @@ class AlertWorker(context: Context, workerParams: WorkerParameters) :
         val donePendingIntent: PendingIntent? = TaskStackBuilder.create(context).run {
             // Add the intent, which inflates the back stack
 
-//            val acceptIntent = Intent(context, MainActivity::class.java).apply {
-//                flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-//                action = AlarmAction.DONE.name
-//            }
-//            addNextIntentWithParentStack(acceptIntent)
+            val acceptIntent = Intent(context, MainActivity::class.java).apply {
+                flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                action = AlarmAction.DONE.name
+            }
+            addNextIntentWithParentStack(acceptIntent)
 
             // Get the PendingIntent containing the entire back stack
             getPendingIntent(0, PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE)
