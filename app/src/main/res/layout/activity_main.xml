@@ -1,90 +1,78 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:aapt="http://schemas.android.com/aapt"
     xmlns:tools="http://schemas.android.com/tools"
-
-    android:padding="20dp"
     android:layout_width="match_parent"
-    tools:context=".MainActivity"
+    android:layout_height="match_parent"
     android:background="@color/colorAccentgrad"
-    android:layout_height="match_parent">
+    android:padding="20dp"
+    android:keepScreenOn="true"
+    tools:context="io.chanjungkim.alarm_workmanager.MainActivity">
+
     <LinearLayout
-        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
         <TextView
-            android:textSize="24sp"
-            android:textColor="@color/colortext"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:gravity="center"
-            android:text="Programar Fecha Alarma \nNotificacion"/>
+            android:text="알람앱"
+            android:textColor="@color/colortext"
+            android:textSize="24sp" />
 
         <TextView
-            android:textSize="18sp"
-            android:text="Fecha y Hora"
-
-            android:textColor="@color/colortext"
-            android:gravity="center_horizontal"
-            android:layout_gravity="center_horizontal"
             android:id="@+id/notifications_date_time"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"/>
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="20dp"
+            android:gravity="center_horizontal"
+            android:hint="설정 시간"
+            android:textColor="@color/colortext"
+            android:textSize="18sp" />
 
         <Button
-
-            android:padding="@dimen/padding_btn"
-            android:background="@drawable/container_bg"
-            android:textAlignment="center"
-            android:textSize="16sp"
-            android:textColor="@color/colortextbutton"
-            android:gravity="center_horizontal"
-            android:layout_gravity="center_horizontal"
             android:id="@+id/change_notification"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
             android:layout_marginTop="20dp"
-            android:text="Programar Fecha y Hora"/>
-
-
-
+            android:background="@drawable/container_bg"
+            android:gravity="center_horizontal"
+            android:padding="@dimen/padding_btn"
+            android:text="시간 설정"
+            android:textAlignment="center"
+            android:textColor="@color/colortextbutton"
+            android:textSize="16sp" />
 
         <Button
-
-            android:padding="@dimen/padding_btn"
-            android:background="@drawable/container_bg"
-            android:textAlignment="center"
-            android:textSize="16sp"
-            android:textColor="@color/colortextbutton"
-            android:gravity="center_horizontal"
-            android:layout_gravity="center_horizontal"
             android:id="@+id/save_notification"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
             android:layout_marginTop="20dp"
-            android:text="Guardar Alarma"/>
-
+            android:background="@drawable/container_bg"
+            android:gravity="center_horizontal"
+            android:padding="@dimen/padding_btn"
+            android:text="등록"
+            android:textAlignment="center"
+            android:textColor="@color/colortextbutton"
+            android:textSize="16sp" />
 
         <Button
-
-            android:padding="@dimen/padding_btn"
-            android:background="@drawable/container_bg"
-            android:textAlignment="center"
-            android:textSize="16sp"
-            android:textColor="@color/colortextbutton"
-            android:gravity="center_horizontal"
-            android:layout_gravity="center_horizontal"
             android:id="@+id/clear_notification"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
             android:layout_marginTop="20dp"
-            android:text="Eliminar Alarma"/>
-
-
-
+            android:background="@drawable/container_bg"
+            android:gravity="center_horizontal"
+            android:padding="@dimen/padding_btn"
+            android:text="CLEAR"
+            android:textAlignment="center"
+            android:textColor="@color/colortextbutton"
+            android:textSize="16sp" />
     </LinearLayout>
-
 </RelativeLayout>

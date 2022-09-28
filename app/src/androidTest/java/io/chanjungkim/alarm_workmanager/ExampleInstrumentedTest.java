@@ -1,4 +1,4 @@
-package com.rogergcc.schedulealarmworkmanager;
+package io.chanjungkim.alarm_workmanager;
 
 import android.content.Context;
 
@@ -22,6 +22,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
 
-        assertEquals("com.rogergcc.schedulealarmworkmanager", appContext.getPackageName());
+        assertEquals("io.chanjungkim.AlarmWorkManager", appContext.getPackageName());
     }
 }

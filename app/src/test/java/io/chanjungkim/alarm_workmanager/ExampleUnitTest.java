@@ -1,4 +1,4 @@
-package com.rogergcc.schedulealarmworkmanager;
+package io.chanjungkim.alarm_workmanager;
 
 import org.junit.Test;
 
