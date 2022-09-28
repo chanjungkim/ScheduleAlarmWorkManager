@@ -1,6 +1,5 @@
 package io.chanjungkim.alarm_workmanager
 
-import io.chanjungkim.alarm_workmanager.AlertWorker.Companion.saveNofification
 import androidx.appcompat.app.AppCompatActivity
 import android.widget.TextView
 import android.os.Bundle
@@ -11,6 +10,7 @@ import android.widget.Button
 import android.widget.Toast
 import androidx.work.Data
 import androidx.work.WorkManager
+import io.chanjungkim.alarm_workmanager.AlertWorker.Companion.saveNotification
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -26,15 +26,16 @@ class MainActivity : AppCompatActivity() {
     private var dateFormatted: String? = null
     private var tvNotificationDateTime: TextView? = null
 
-    var clearNotification: Button? = null
-    var saveNotification: Button? = null
+    var btnClearNotification: Button? = null
+    var btnSaveNotification: Button? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         val sdfDateOnly = SimpleDateFormat("yyyy MM dd")
         tvNotificationDateTime = findViewById(R.id.notifications_date_time)
-        clearNotification = findViewById(R.id.clear_notification)
-        saveNotification = findViewById(R.id.save_notification)
+        btnClearNotification = findViewById(R.id.clear_notification)
+        btnSaveNotification = findViewById(R.id.save_notification)
+
         findViewById<View>(R.id.change_notification).setOnClickListener { view ->
             year = calendarActual[Calendar.YEAR]
             month = calendarActual[Calendar.MONTH]
@@ -62,15 +63,15 @@ class MainActivity : AppCompatActivity() {
             datePickerDialog.datePicker.minDate = calendarActual.timeInMillis
             datePickerDialog.show()
         }
-        saveNotification!!.setOnClickListener {
+        btnSaveNotification!!.setOnClickListener {
             val tag = generateKey()
             val alertTime = calendar.timeInMillis - System.currentTimeMillis()
             val random = (Math.random() * 50 + 1).toInt()
             val data = saveData("title", "message", random)
-            saveNofification(alertTime, data, tag)
+            saveNotification(applicationContext, alertTime, data, tag)
             Toast.makeText(this@MainActivity, "$dateFormatted 시에 알람이 등록되었습니다.", Toast.LENGTH_SHORT).show()
         }
-        clearNotification!!.setOnClickListener { deleteNotification("tag1") }
+        btnClearNotification!!.setOnClickListener { deleteNotification("tag1") }
     }
 
     private fun deleteNotification(tag: String) {

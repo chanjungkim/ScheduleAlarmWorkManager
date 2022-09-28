@@ -88,7 +88,7 @@ class AlertWorker(context: Context, workerParams: WorkerParameters) :
             setSmallIcon(R.drawable.ic_stat_name)
 //            setLargeIcon(bitmap)
 
-            setContentTitle("IAM 섭취 알람")
+            setContentTitle("섭취 알람")
             setContentText("이번에 누르면, 연속 100일 달성! 랭킹 상승! 레벨업 상승!")
             // setDefaults(Notification.DEFAULT_LIGHTS or Notification.DEFAULT_VIBRATE)
             setCategory(NotificationCompat.CATEGORY_ALARM)
@@ -107,7 +107,7 @@ class AlertWorker(context: Context, workerParams: WorkerParameters) :
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             val channel = NotificationChannel(
                 "$ALARM_CHANNEL_ID",
-                "우주약방",
+                "섭취 알람",
                 NotificationManager.IMPORTANCE_HIGH
             )
             channel.apply {
@@ -128,15 +128,14 @@ class AlertWorker(context: Context, workerParams: WorkerParameters) :
         notificationManager.notify(ALARM_CHANNEL_ID, mNotification)
     }
 
-    companion object {
+    companion object{
         @JvmStatic
-        fun saveNofification(duration: Long, data: Data?, tag: String?) {
-            val notificationWork = OneTimeWorkRequest.Builder(
-                AlertWorker::class.java
-            )
+        fun saveNotification(context: Context, duration: Long, data: Data?, tag: String?) {
+            val notificationWork = OneTimeWorkRequest.Builder(AlertWorker::class.java)
                 .setInitialDelay(duration, TimeUnit.MILLISECONDS).addTag(tag!!)
-                .setInputData(data!!).build()
-            val instaWorkManager = WorkManager.getInstance()
+                .setInputData(data!!)
+                .build()
+            val instaWorkManager = WorkManager.getInstance(context)
             instaWorkManager.enqueue(notificationWork)
         }
     }
